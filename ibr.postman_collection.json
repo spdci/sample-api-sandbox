@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "b8c62445-d187-4563-ab7b-5fe387e540b8",
+		"name": "GIZ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29680004"
+	},
+	"item": [
+		{
+			"name": "IBR",
+			"item": [
+				{
+					"name": "SearchByExp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"signature\": \"Signature:  namespace=\\\"dci\\\", kidId=\\\"{sender_id}|{unique_key_id}|{algorithm}\\\", algorithm=\\\"ed25519\\\", created=\\\"1606970629\\\", expires=\\\"1607030629\\\", headers=\\\"(created) (expires) digest\\\", signature=\\\"Base64(signing content)\",\n  \"header\": {\n    \"version\": \"1.0.0\",\n    \"message_id\": \"0c96614c-7255-4774-b109-cd53ee851769\",\n    \"message_ts\": \"2023-07-19T12:15:04.555Z\",\n    \"action\": \"search\",\n    \"sender_id\": \"sp-system\",\n    \"sender_uri\": \"\",\n    \"receiver_id\": \"crvs\",\n    \"total_count\": \"1\",\n    \"is_msg_encrypted\": false,\n    \"meta\": \"\"\n  },\n  \"message\": {\n    \"transaction_id\": \"\",\n    \"search_request\": [\n      {\n        \"reference_id\": \"\",\n        \"timestamp\": \"2022-12-04T17:20:07-04:00\",\n        \"search_criteria\": {\n          \"version\": \"1.0.0\",\n          \"reg_event_type\": \"REGISTER\",\n          \"query_type\": \"expression\",\n          \"query\": [\n            {\n                \"seq_num\" : 0,\n                \"expression1\": {\n                    \"attribute_name\":\"benefitingEntity\",\n                    \"operator\": \"eq\",\n                    \"attribute_value\": \"Person\"\n                },\n                \"condition\": \"not\",\n                \"expression2\": {\n                    \"attribute_name\":\"isDisabled\",\n                    \"operator\": \"eq\",\n                    \"attribute_value\": \"Disabled\"\n                }\n            }\n          ],\n          \"sort\": [\n            {\n              \"attribute_name\": \"UIN\",\n              \"sort_order\": \"asc\"\n            }\n          ],\n          \"pagination\": {\n            \"page_size\": 10,\n            \"page_number\": 1\n          },\n          \"consent\": \"\",\n          \"authorize\": \"\"\n        },\n        \"locale\": \"\"\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/api/searchPerson"
+					},
+					"response": []
+				},
+				{
+					"name": "Search by type value",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"signature\": \"Signature:  namespace=\\\"dci\\\", kidId=\\\"{sender_id}|{unique_key_id}|{algorithm}\\\", algorithm=\\\"ed25519\\\", created=\\\"1606970629\\\", expires=\\\"1607030629\\\", headers=\\\"(created) (expires) digest\\\", signature=\\\"Base64(signing content)\",\n  \"header\": {\n    \"version\": \"1.0.0\",\n    \"message_id\": \"0c96614c-7255-4774-b109-cd53ee851769\",\n    \"message_ts\": \"2023-07-19T12:15:04.555Z\",\n    \"action\": \"search\",\n    \"sender_id\": \"sp-system\",\n    \"sender_uri\": \"\",\n    \"receiver_id\": \"crvs\",\n    \"total_count\": \"1\",\n    \"is_msg_encrypted\": false,\n    \"meta\": \"\"\n  },\n  \"message\": {\n    \"transaction_id\": \"\",\n    \"search_request\": [\n      {\n        \"reference_id\": \"\",\n        \"timestamp\": \"2022-12-04T17:20:07-04:00\",\n        \"search_criteria\": {\n          \"version\": \"1.0.0\",\n          \"reg_event_type\": \"REGISTER\",\n          \"query_type\": \"idtype-value\",\n          \"query\": {\n            \"type\": \"benefitType\",\n            \"value\": \"TypeC\"\n          },\n          \"sort\": [\n            {\n              \"attribute_name\": \"UIN\",\n              \"sort_order\": \"asc\"\n            }\n          ],\n          \"pagination\": {\n            \"page_size\": 10,\n            \"page_number\": 1\n          },\n          \"consent\": \"\",\n          \"authorize\": \"\"\n        },\n        \"locale\": \"\"\n      }\n    ]\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8081/api/searchPerson"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
