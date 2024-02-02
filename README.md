@@ -23,8 +23,7 @@ sudo docker-compose -f docker-compose.yaml up -d
 After database installation run following sql to create database.
 
 ```
-IbrTable.sql
-SocialTable.sql
+database.sql
 ```
 
 
