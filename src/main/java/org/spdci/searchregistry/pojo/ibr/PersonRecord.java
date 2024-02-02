@@ -11,7 +11,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "person_view")
+@Table(name = "ibr_person_view")
 @Entity
 public class PersonRecord {
 

@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Embeddable
 @Data
-public class SocialPersonIdentifierId implements Serializable {
+public class PersonIdentifierId implements Serializable {
 
     @Column(name = "social_person_id")
     private int socialPersonId;

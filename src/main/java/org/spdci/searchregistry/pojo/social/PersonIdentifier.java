@@ -8,10 +8,10 @@ import lombok.Data;
 @Entity
 @Table(name = "social_person_identifier")
 @Data
-public class SocialPersonIdentifier {
+public class PersonIdentifier {
 
     @EmbeddedId
-    private SocialPersonIdentifierId id;
+    private PersonIdentifierId id;
 
     @ManyToOne
     @MapsId("socialPersonId")

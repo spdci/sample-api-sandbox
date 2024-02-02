@@ -1,13 +1,19 @@
 package org.spdci.searchregistry.service.impl.social;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
+import static org.springframework.data.jpa.domain.Specification.where;
 
-import org.spdci.searchregistry.pojo.ibr.PersonRecord;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.spdci.searchregistry.pojo.request.Query;
 import org.spdci.searchregistry.pojo.request.QueryExpression;
 import org.spdci.searchregistry.pojo.request.SearchRequest;
-import org.spdci.searchregistry.pojo.response.*;
+import org.spdci.searchregistry.pojo.response.Header;
+import org.spdci.searchregistry.pojo.response.Message;
+import org.spdci.searchregistry.pojo.response.ResponseData;
+import org.spdci.searchregistry.pojo.response.SearchResponse;
+import org.spdci.searchregistry.pojo.response.SearchResponseObj;
 import org.spdci.searchregistry.pojo.social.SocialPerson;
 import org.spdci.searchregistry.pojo.social.SocialPersonRecord;
 import org.spdci.searchregistry.repository.SocialPersonRecordRepository;
@@ -18,12 +24,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static org.springframework.data.jpa.domain.Specification.where;
+import lombok.extern.slf4j.Slf4j;
 
 @Service("SocialRecordImpl")
 @Slf4j
@@ -93,7 +96,7 @@ public class SearchSocialPersonRecordImpl implements ISearchService {
 
 	private SearchResponse getSearchResponseBySpecification(SearchRequest searchRequest,
 			Specification<SocialPersonRecord> specificationFromFilters) {
-		List<SocialPersonRecord> personRecord;
+		List<org.spdci.searchregistry.pojo.social.SocialPersonRecord> personRecord;
 		if (specificationFromFilters == null) {
 
 			personRecord = socialPersonRecordRepository.findAll();
@@ -126,8 +129,7 @@ public class SearchSocialPersonRecordImpl implements ISearchService {
 			where = where.and(specificationImpl.createSpecificationForQueryExp(filterData.get(0).getExpression2()));
 		}
 
-		Specification<SocialPersonRecord> specification = specificationFromFilters == null ? where
-				: specificationFromFilters;
+		Specification<SocialPersonRecord> specification = specificationFromFilters == null ? where : specificationFromFilters;
 
 		for (QueryExpression input : filterData) {
 
